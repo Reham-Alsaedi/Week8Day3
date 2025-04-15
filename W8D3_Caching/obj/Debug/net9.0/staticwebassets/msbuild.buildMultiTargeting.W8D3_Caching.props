@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/W8D3_Caching.props" />
+</Project>

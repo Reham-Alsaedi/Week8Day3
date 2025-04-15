@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Dynamic Posts";
+}
+
+<!-- Dynamic Posts Section -->
+<h2>Posts (IMemoryCache & Dynamic UI)</h2>
+<!-- Link to Post Controller -->
+<a href="@Url.Action("Index", "Post")" class="btn btn-info">Go to Posts</a>
+<div id="dynamicPostsSection">
+    <div class="mb-3">
+        <button class="btn btn-primary" onclick="loadPosts(1)">User 1</button>
+        <button class="btn btn-secondary" onclick="loadPosts(2)">User 2</button>
+    </div>
+    <table class="table" id="dynamicPostsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User ID</th>
+                <th>Title</th>
+                <th>Body</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Posts will be inserted here -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Fetch and display posts for Dynamic UI
+    async function loadPosts(userId) {
+        const response = await fetch('/PostMemoryCaching/GetPosts');
+        const posts = await response.json();
+
+        const filteredPosts = posts.filter(p => p.userId === userId);
+
+        const tbody = document.querySelector("#dynamicPostsTable tbody");
+        tbody.innerHTML = ''; 
+
+        filteredPosts.forEach(post => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${post.id}</td>
+                <td>${post.userId}</td>
+                <td>${post.title}</td>
+                <td>${post.body}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+</script>
+
+

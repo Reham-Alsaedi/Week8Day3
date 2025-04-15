@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lazy Loading Images</title>
+  <style>
+    .image-container {
+      margin: 20px;
+      text-align: center;
+    }
+    img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lazy Loaded Images Example</h1>
+
+  <div class="image-container">
+    <img
+      src="https://picsum.photos/seed/1/300/200.webp"
+      alt="Lazy Image 1"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="image-container">
+    <img
+      src="https://picsum.photos/seed/2/300/200.webp"
+      alt="Lazy Image 2"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="image-container">
+    <img
+      src="https://picsum.photos/seed/3/300/200.webp"
+      alt="Lazy Image 3"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="image-container">
+    <img
+      src="https://cdn.jsdelivr.net/gh/picsum/photos@master/300/200.webp"
+      alt="CDN Lazy Image"
+      loading="lazy"
+    />
+  </div>
+
+</body>
+</html>
